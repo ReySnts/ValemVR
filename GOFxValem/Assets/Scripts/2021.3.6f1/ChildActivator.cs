@@ -1,13 +1,22 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class ChildActivator : MonoBehaviour
 {
-    [SerializeField] GameObject rayInteractor;
+    [SerializeField] private GameObject rayTeleport;
 
-    [SerializeField] InputActionProperty activateProperty;
+    [SerializeField] private GameObject rayGrab;
 
-    [SerializeField] InputActionProperty selectProperty;
+    [SerializeField] private InputActionProperty activateProperty;
 
-    private void Update() => rayInteractor.SetActive(activateProperty.action.ReadValue<bool>() && selectProperty.action.ReadValue<bool>());
+    [SerializeField] private InputActionProperty selectProperty;
+
+    [SerializeField] private XRDirectInteractor xRDirectInteractor;
+
+    private void Update()
+    {
+        rayTeleport.SetActive(activateProperty.action.ReadValue<float>() > 0.1f && selectProperty.action.ReadValue<float>() == 0f);
+        rayGrab.SetActive(xRDirectInteractor.interactablesSelected.Count == 0);
+    }
 }
