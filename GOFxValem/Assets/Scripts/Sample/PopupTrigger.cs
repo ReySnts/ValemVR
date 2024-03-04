@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class PopupTrigger : MonoBehaviour
 {
-    public TrashType trashType;
+    public TrashType CollectedTrashType { get; private set; }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Trash"))
+        var trashGrabbable = other.GetComponent<TrashGrabbable>();
+        if (trashGrabbable)
         {
-            trashType = other.GetComponent<TrashGrabbable>().trashType;
-            Destroy(other);
+            CollectedTrashType = trashGrabbable.TrashType;
+            trashGrabbable.Release();
         }
     }
 }

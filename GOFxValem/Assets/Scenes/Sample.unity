@@ -384,17 +384,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 98491c2c584344547a953e11cf492e32,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 98491c2c584344547a953e11cf492e32,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 98491c2c584344547a953e11cf492e32,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 98491c2c584344547a953e11cf492e32,
         type: 3}
@@ -450,6 +450,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 98491c2c584344547a953e11cf492e32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -902,8 +907,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 954263345}
   - {fileID: 2029841360}
@@ -1055,6 +1060,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1462704284}
   - component: {fileID: 1462704285}
+  - component: {fileID: 1462704286}
   m_Layer: 0
   m_Name: RandomTrashSpawner
   m_TagString: Untagged
@@ -1089,10 +1095,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf541da6531adb49942fea6b649cfb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomSpawnPosition: {fileID: 1462704286}
   trashPrefabs:
   - {fileID: 3554097511746325219, guid: 30fb998acd199b64985f2eba9c9a9ac8, type: 3}
   - {fileID: 7748309962239975285, guid: 3e32cd9cee1a4534bb695fecec8801d2, type: 3}
   - {fileID: 6812707444519873556, guid: 25b5790aa6ec9f841b1579641f8a78af, type: 3}
+  maxDuration: 120
+  spawnDuration: 2.5
+--- !u!114 &1462704286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462704283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27ca83680d1ba542a2a198dee201cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRandomX: -2.34
+  maxRandomX: 1.28
+  randomY: -0.58
+  minRandomZ: -1.26
+  maxRandomZ: 1.8
 --- !u!4 &1542420853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 607245160855717474, guid: 4f0f2e420f6798449860993ec1769b84,
@@ -1891,8 +1917,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1702008827}
   - {fileID: 515599075}

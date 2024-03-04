@@ -1,26 +1,42 @@
 using System.Collections;
 using UnityEngine;
 
-public class RandomTrashSpawner : MonoBehaviour
+public class RandomTrashSpawner : ObjectPool
 {
+    [SerializeField] private RandomSpawnPosition randomSpawnPosition;
+
     [SerializeField] private GameObject[] trashPrefabs;
 
-    private readonly float duration = 20f;
+    [SerializeField] private float maxDuration = 120f;
 
-    private int TrashIndex => Random.Range(0, trashPrefabs.Length);
+    [SerializeField] private float spawnDuration = 2.5f;
 
-    private float RandomX => Random.Range(-1.17f, 0.64f);
+    protected override int MaximumSize => (int)(maxDuration / spawnDuration);
 
-    private float RandomZ => Random.Range(-0.63f, 0.86f);
+    private int RandomTrashIndex => Random.Range(minInclusive: 0, maxExclusive: trashPrefabs.Length);
 
-    private Vector3 SpawnPosition => new(RandomX, -0.29f, RandomZ);
+    protected override void OnStart()
+    {
+        for (int i = 0; i < MaximumSize; i++)
+        {
+            var randomTrashPrefab = trashPrefabs[RandomTrashIndex];
+            var trashGrabbable = randomTrashPrefab.GetComponent<TrashGrabbable>();
+            var spawnedTrash = Instantiate(original: trashGrabbable, position: randomSpawnPosition.Value, rotation: Quaternion.identity, parent: transform);
+            spawnedTrash.ObjectPool = this;
+            Return(pooledObject: spawnedTrash);
+        }
+    }
+
+    protected override void Start()
+    {
+        OnStart();
+        StartCoroutine(Spawn());
+    }
 
     private IEnumerator Spawn()
     {
-        Instantiate(original: trashPrefabs[TrashIndex], position: SpawnPosition, rotation: Quaternion.identity, parent: transform);
-        yield return new WaitForSeconds(2.5f);
-        if (Time.time < duration) StartCoroutine(Spawn());
+        Get();
+        yield return new WaitForSeconds(spawnDuration);
+        if (Time.time < maxDuration) StartCoroutine(Spawn());
     }
-
-    private void Start() => StartCoroutine(Spawn());
 }

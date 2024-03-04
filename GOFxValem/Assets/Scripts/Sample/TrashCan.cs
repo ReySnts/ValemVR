@@ -1,7 +1,10 @@
 using TMPro;
+using UnityEngine;
 
-public class TrashCan : Trash
+public class TrashCan : MonoBehaviour
 {
+    [SerializeField] private TrashType trashType;
+
     private PopupTrigger popupTrigger;
 
     private TextMeshProUGUI tMP;
@@ -12,5 +15,5 @@ public class TrashCan : Trash
         tMP = GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    private void Update() => tMP.text = popupTrigger.trashType == trashType ? "BENAR!" : "SALAH!";
+    private void Update() => tMP.text = popupTrigger.CollectedTrashType == trashType ? "BENAR!" : "SALAH!";
 }

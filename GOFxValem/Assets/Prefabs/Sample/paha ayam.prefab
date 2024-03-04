@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: dd8cc9c3350d1f64fb295c357f3d39b3,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.8
+      value: 5.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd8cc9c3350d1f64fb295c357f3d39b3,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.8
+      value: 5.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd8cc9c3350d1f64fb295c357f3d39b3,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.8
+      value: 5.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd8cc9c3350d1f64fb295c357f3d39b3,
         type: 3}
@@ -76,7 +76,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: dd8cc9c3350d1f64fb295c357f3d39b3,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dd8cc9c3350d1f64fb295c357f3d39b3,
         type: 3}
@@ -323,4 +323,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5bf981ee98de84b8ee8e1c9010bf9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trashType: 0
+  <TrashType>k__BackingField: 0
